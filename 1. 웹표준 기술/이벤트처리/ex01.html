@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.onload = function() {  //  *** onload를 직접적으로 쓰면 치명적인 문제가 있다. 명확하게 함수 안에서 고립된 상태에서 쓰면 괜찮다. 그러나 전역 환경일 땐 쓰면 안된다. 함수 객체가 처음에 대입되고 실행되어야 하는데 마지막만 실행된다. 오류 발생한다. onload event는 뒤에 정의했다 가정하면 둘 다 실행이 되어야하는데 한 쪽이 실행이 안된다. 
+                const buttonEl = document.getElementById("button");
+                buttonEl.onclick = function() {
+                    alert("클릭1");
+                };
+            }
+            /*
+            window.addEventListener("DOMContentLoaded", function() {
+                const buttonEl = document.getElementById("button");
+                buttonEl.onclick = function() {
+                    alert("클릭1");
+                };
+                
+                buttonEl.onclick = function() {
+                    alert("클릭2");
+                };
+            });
+            */
+        </script>
+        <button type="button" id="button">클릭</button>
+
+        <script>
+            window.onload = function() {    // *** 위에 onload는 실행 안되고 지금 여기만 실행된다. 이걸 해결하려면 ? 별도의 이벤트를 써야한다.= addevent 쓰기
+                console.log("다른 로직...");
+            };
+        </script>
+    </body>
+</html>
