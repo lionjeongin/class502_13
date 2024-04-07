@@ -16,7 +16,7 @@ const TodoContainer = () => {
   const [todo, setTodo] = useState('');
   const [message, setMessage] = useState('');
 
-  let id = useRef(4); // 할일 id
+  let id = useRef(4); // 할일 id 
 
   // 할일 등록 처리
   const onSubmit = useCallback(
