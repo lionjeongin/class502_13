@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
+import { produce } from 'immer';
 
 const intialValue = [
   { id: 1, title: '할일1', done: true },
@@ -8,15 +9,13 @@ const intialValue = [
   { id: 3, title: '할일3', done: false },
 ];
 
-let submitFunc;
-
 const TodoContainer = () => {
   // 업데이트 시, 매번 호출
   const [items, setItems] = useState(intialValue);
   const [todo, setTodo] = useState('');
   const [message, setMessage] = useState('');
 
-  let id = useRef(4); // 할일 id 
+  let id = useRef(4); // 할일 id
 
   // 할일 등록 처리
   const onSubmit = useCallback(
@@ -28,6 +27,7 @@ const TodoContainer = () => {
         return;
       }
 
+      /*
       setItems((prevItems) => {
         return prevItems.concat({
           id: id.current,
@@ -35,6 +35,16 @@ const TodoContainer = () => {
           done: false,
         });
       });
+      */
+      setItems(
+        produce((draft) => {
+          draft.push({
+            id: id.current,
+            title: todo.trim(),
+            done: false,
+          });
+        }),
+      );
 
       id.current++;
 
@@ -43,9 +53,6 @@ const TodoContainer = () => {
     },
     [todo],
   );
-
-  console.log('같은 함수 : ? ', submitFunc === onSubmit);
-  submitFunc = onSubmit;
 
   // 할일 입력시 todo 상태값 변경
   const onChange = useCallback((e) => setTodo(e.currentTarget.value), []);
@@ -57,28 +64,31 @@ const TodoContainer = () => {
         item.id === id ? { ...item, done: !item.done } : item,
       );
       setItems(newItems);
-    */
-
-    setItems((prevItems) => {
-      return prevItems.map((item) =>
+      */
+    /*
+    setItems((prevItems) =>
+      prevItems.map((item) =>
         item.id === id ? { ...item, done: !item.done } : item,
-      );
-    });
+      ),
+    );
+    */
+    setItems(
+      produce((draft) =>
+        draft.forEach((item) => item.id === id && (`item.done = !item.done`)),
+      ),
+    );
   }, []);
 
   // 할일 목록 제거
-  const onRemove = useCallback(
-    (id) => {
-      /*
+  const onRemove = useCallback((id) => {
+    /*
       const newItems = items.filter((item) => item.id !== id);
       setItems(newItems);
       */
-      setItems((prevItems) => {
-        return prevItems.filter(item => item.id !== id)
-      });
-    },
-    [],
-  );
+    setItems((prevItems) => {
+      return prevItems.filter((item) => item.id !== id);
+    });
+  }, []);
 
   return (
     <>
