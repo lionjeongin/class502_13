@@ -1,4 +1,4 @@
-import CSSModule from './components/CSSModule';
+import CSSModule from './components/CssModule';
 
 const App = () => {
   return <CSSModule />;
