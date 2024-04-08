@@ -4,10 +4,11 @@ $yellow: #fcc419;
 $green: #40c057;
 $blue: #339af0;
 $indigo: #5c7cfa;
-$violet: #7950fe;
+$violet: #7950f2;
 
-@mixin square($size) { //@mixin가 있어야 함수 정의 가능하다.
+@mixin square($size) {
     $calculated: 50px * $size;
+
     width: $calculated;
     height: $calculated;
 }

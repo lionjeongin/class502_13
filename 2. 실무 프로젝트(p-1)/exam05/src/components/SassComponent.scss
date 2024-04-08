@@ -1,26 +1,12 @@
 @import './utils.scss';
 
-$red: #fa5252;
-$orange: #fd7e14;
-$yellow: #fcc419;
-$green: #40c057;
-$blue: #339af0;
-$indigo: #5c7cfa;
-$violet: #7950fe;
-
-@mixin square($size) { //@mixin가 있어야 함수 정의 가능하다.
-    $calculated: 50px * $size;
-    width: $calculated;
-    height: $calculated;
-}
-
 .SassComponent {
     display: flex;
 
     .box {
-        &.red { // .box.red와 동일(현재 선택자와 동일)
+        &.red {
             background: $red;
-            @include square(1);  //@include 함수 호출해서 사용(적용)한다.
+            @include square(1); 
         }
 
         &.orange {
@@ -58,4 +44,5 @@ $violet: #7950fe;
         }
     }
 
+    
 }

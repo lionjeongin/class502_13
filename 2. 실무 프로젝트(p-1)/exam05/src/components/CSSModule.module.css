@@ -1,8 +1,15 @@
-.m.wraper {
-    padding:20px
+.wrapper {
+    padding: 20px;
     background: black;
-    color: :white;
-    font-size=
-    
+    color: white;
+    font-size: 2rem;
 
+    .highlight {
+        color: orange;
+        font-weight: bold;
+    }
+}
+
+:global .commonColor {
+    color: blue;
 }
