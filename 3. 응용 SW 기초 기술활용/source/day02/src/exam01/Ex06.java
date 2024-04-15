@@ -9,6 +9,7 @@ public class Ex06 {
         }
 
         System.out.println("합계: " + total);
+        // 결과 : 합계: 5050
 
         //(2)
         int total2 = 0;
@@ -18,6 +19,13 @@ public class Ex06 {
         }
 
         System.out.println("합계: " + total2);
+
+        //결과
+        //k:10
+        //k:11
+        // ...
+        //k: 210
+        //합계: 5050
 
 
         //(3)
@@ -32,6 +40,12 @@ public class Ex06 {
             System.out.println("m" + m);
         }
         // for ( ; ; ) {  }  ==  while(true) { ... }
+
+        //결과
+        //m:10
+        //m:11
+        // ...
+        //m: 210
 
     }
 }
