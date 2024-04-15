@@ -41,7 +41,7 @@ const todo = {
       parentEl.removeChild(liEl);
     });
 
-    return liEl;
+    return liEl; // liEl
   },
 };
 

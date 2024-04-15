@@ -10,6 +10,6 @@ public class Ex03 {
         char ch2 = '가';
         System.out.println(ch2); // 가
         System.out.println(ch2+ 1); // 44033
-        System.out.println(ch2); // 강의 때 못 적었다ㅜ
+        System.out.println('나' > '가'); 
     }
 }
