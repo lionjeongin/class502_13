@@ -9,8 +9,8 @@ public class Ex02 {
         nums[2] = 30;
 
         for (int i = 0; i <= 3; i++) {
-            System.out.println(nums[i]); // 0, 1, 2, 3
-        }
+            System.out.println(nums[i]); // 0번째, 1번째, 2번째, 3번째
+        }// nums[3]은 선언만 하고 값을 넣어주지 않았지만 기본 값이 있기 때문에 0이 나온다.
         /* 결과
         10
         20
