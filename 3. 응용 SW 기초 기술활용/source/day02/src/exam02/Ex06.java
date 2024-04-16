@@ -12,7 +12,7 @@ public class Ex06 {
         System.out.println(nums); // 배열을 출력하면 주소값이 나온다.
         //System.out.println(Arrays.toString(nums)); // 결과 : [[I@3b07d329, [I@41629346]
         // Ex07을 보면 Arrays.toString는 간편하게 배열 안을 보여주는데 여기선 주소를 보여준다
-        // 그 이유 ?
+        // 그 이유 ? 일차원 배열인데 배열을 출력하는 거니까 주소만 나온다. String일 땐 잘 나온다!
 
         System.out.println(Arrays.deepToString(nums)); // 4차원 배열일 땐 이걸 쓴다!! 간편하게 배열 안에 있는 걸 확인 가능
 
