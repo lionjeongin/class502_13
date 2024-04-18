@@ -2,7 +2,7 @@ package study_class;
 
 public class Class03 {
     class HandPhone {
-        // 멤버 변수 선언
+        // 멤버변수 선언
 
         String phoneNumber;
         String name;
