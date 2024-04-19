@@ -1,2 +1,7 @@
-package exam05;public class ComplexityCalculator {
+package exam05;
+
+public class ComplexityCalculator {
+    public ComplexityCalculator() {
+
+    }
 }
