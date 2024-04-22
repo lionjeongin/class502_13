@@ -1,2 +1,4 @@
-package exam04;public interface Seller {
+package exam04;
+
+public interface Seller {
 }

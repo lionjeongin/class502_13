@@ -1,2 +1,4 @@
-package exam04;public interface Buyer {
+package exam04;
+
+public interface Buyer {
 }
