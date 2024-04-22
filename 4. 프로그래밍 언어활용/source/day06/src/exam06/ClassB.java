@@ -1,7 +1,7 @@
 package exam06;
 
-public class B {
+public class ClassB {
     public void method() {
-        System.out.println("B 에서 정의한 메서드");
+        System.out.println("B에서 정의한 메서드");
     }
 }

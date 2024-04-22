@@ -1,2 +1,5 @@
-package exam05;public class B {
+package exam05;
+
+public interface B {
+    void method();
 }

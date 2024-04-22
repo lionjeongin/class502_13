@@ -5,6 +5,7 @@ public class Ex01 {
         Calculator cal = new ComplexCalculator();
         int result = cal.add(10, 20);
         System.out.println(result);
+
         System.out.println(cal.num);
     }
 }

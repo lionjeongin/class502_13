@@ -1,4 +1,4 @@
 package exam06;
 
-public class C extends ClassA, ClassB {
+public class ClassC /*extends ClassA, ClassB */{
 }
