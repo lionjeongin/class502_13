@@ -1,7 +1,7 @@
 package exam04;
 
 public class LoginService {
-    public void login(String userId, String userPw) {
+    public void login(String userId, String userPw) throws UserIdException, UserPwException {
         // userId - user01, userPw = 123456
         try {
             if (!userId.equals("user01")) {

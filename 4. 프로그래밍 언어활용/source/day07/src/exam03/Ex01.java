@@ -1,7 +1,5 @@
 package exam03;
 
-import exam04.Resources2;
-
 public class Ex01 {
     public static void main(String[] args) throws Exception {
         Resources res = new Resources();
