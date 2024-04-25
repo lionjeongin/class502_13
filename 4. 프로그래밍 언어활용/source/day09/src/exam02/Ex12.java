@@ -19,3 +19,6 @@ public class Ex12 {
         return null;
     }
 }
+/* 결과
+https://naver.com/images/logo.png
+ */
