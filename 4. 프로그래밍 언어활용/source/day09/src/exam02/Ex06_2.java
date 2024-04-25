@@ -21,3 +21,7 @@ public class Ex06_2 {
         System.out.println(m1.group());
     }
 }
+/* 결과
+java
++ 오류발생
+ */
