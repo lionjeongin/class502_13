@@ -1,14 +1,13 @@
-import Counter from "./components/Counter";
-import CounterCoutainer from "./containers/CounterContainer";
-import TodoContainer from "./containers/TodoContainer";
+import CounterContainer from "./containers/CounterContainer";
+import TodoContainer from "./containers/TodoContainer2";
 
 const App = () => {
   return (
-  <>
-    <CounterCoutainer />;
-    <TodoContainer />;
-  </>
-  
+    <>
+      <CounterContainer />
+      <TodoContainer />
+    </>
+  );
 };
 
 export default App;
