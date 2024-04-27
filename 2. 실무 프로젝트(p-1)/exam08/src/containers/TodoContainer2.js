@@ -32,6 +32,6 @@ const TodoContainer = () => {
       onRemove={onRemove}
     />
   );
-};
+}; 
 
 export default React.memo(TodoContainer);
