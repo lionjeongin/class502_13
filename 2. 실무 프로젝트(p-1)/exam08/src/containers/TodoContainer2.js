@@ -7,7 +7,7 @@ const TodoContainer = () => {
   const [todo, setTodo] = useState("");
 
   const todos = useSelector((state) => state.todo);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const onInsert = useCallback((todo) => dispatch(insert(todo)), [dispatch]);
   const onRemove = useCallback((id) => dispatch(remove(id)), [dispatch]);
 
