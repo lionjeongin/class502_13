@@ -20,7 +20,8 @@ public class Ex04 {
         };
 
        //1. HashSet<String> names = new HashSet<>();
-        Set<String> names = new TreeSet<>(comp);  //2. // 다형성 이용해서 알게 모르게 쓰려면 TreeSet을 Set<String>으로 바꾸기
+        //Set<String> names = new TreeSet<>(comp);  //2. // 다형성 이용해서 알게 모르게 쓰려면 TreeSet을 Set<String>으로 바꾸기
+        Set<String> names = new TreeSet<>(Comparator.reverseOrder()); //  이미 역순 정렬기능이 만들어져 있다!
         names.add("이름1");
         names.add("이름2");
         names.add("이름2");
