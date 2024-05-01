@@ -1,9 +1,3 @@
-/*
-다음 코드의 출력 결과가 '진돗개 멍멍이'가 되도록 MyDog 클래스를 수정하세요
- */
-
-package chapter11;
-
 class MyDog{
     String name;
     String type;
