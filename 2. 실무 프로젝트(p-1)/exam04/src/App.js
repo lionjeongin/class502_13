@@ -4,4 +4,4 @@ const App = () => {
   return <Average />;
 };
 
-export default App;
+export default App; 
