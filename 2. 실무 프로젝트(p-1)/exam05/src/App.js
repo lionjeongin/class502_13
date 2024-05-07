@@ -23,8 +23,8 @@ const App = () => {
         <Route path="board" element={<BoardList />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes> 
-  );
+    </Routes>
+  );  
 }; 
 
 export default App;
