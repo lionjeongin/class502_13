@@ -11,4 +11,4 @@ public class Ex10 {
         String title = opt.orElseGet(() -> b.getTitle());
        // String title = opt.orElseGet(b::getTitle);
     }
-}
+}   // 
