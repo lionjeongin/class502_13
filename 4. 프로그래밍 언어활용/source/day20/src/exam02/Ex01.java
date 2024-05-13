@@ -11,7 +11,6 @@ public class Ex01 {
         long etime = System.nanoTime(); // 공통 추가 기능
         System.out.printf("걸린시간: %d%n", etime - stime);
 
-
         stime = System.nanoTime(); // 공통적인 추가 기능
 
         RecCalculator cal2 = new RecCalculator();
