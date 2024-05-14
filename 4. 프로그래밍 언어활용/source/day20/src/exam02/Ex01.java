@@ -20,7 +20,7 @@ public class Ex01 {
         etime = System.nanoTime();  // 공통적인 추가 기능
         System.out.printf("걸린시간: %d%n", etime - stime);
     }
-}
+} 
 /*
 cal1: 3628800
 걸린시간: 9651800
