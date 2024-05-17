@@ -3,7 +3,7 @@ package exam01;
 public class Ex07 {
     private static boolean autoSave = false;
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
         Thread th = new Thread(() -> {
             while (true) {
                 try {
@@ -15,8 +15,9 @@ public class Ex07 {
             }
         });
 
-        th.setDaemon(true);  // 현재 작업 중인 쓰레드가 종료 -> 함께 종료
+        th.setDaemon(true); // 현재 작업 중인 쓰레드가 종료 -> 함께 종료
         th.start();
+
 
         for (int i = 1; i <= 10; i++) {
 
@@ -26,6 +27,5 @@ public class Ex07 {
                 autoSave = true;
             }
         }
-
     }
 }
