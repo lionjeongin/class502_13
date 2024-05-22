@@ -8,7 +8,7 @@ public class Ex01 {
     void test1() {
         Member member = new Member();
         member.setUserId("USER01");
-        member.setUserNm("사용자01");
+        member.setUserNm("user01");
         System.out.println(member);
     }
 }
