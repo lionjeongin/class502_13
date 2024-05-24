@@ -5,8 +5,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import javax.imageio.IIOException;
-import javax.print.DocFlavor;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -25,7 +23,7 @@ public class DBConn {
     }
 
     public static SqlSession getSession(boolean autoCommit) {
-       return factory.openSession(autoCommit);
+        return factory.openSession(autoCommit);
     }
 
     public static SqlSession getSession() {
