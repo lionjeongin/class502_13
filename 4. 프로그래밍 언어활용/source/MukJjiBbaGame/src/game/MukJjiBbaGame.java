@@ -25,7 +25,7 @@ public class MukJjiBbaGame {
         'MukJjiBba' 열거형의 각 상수를 생성할 때 해당 상수의 한글 이름을 지정하는 생성자
         'koreanName'은 생성자의 매개변수로 받은 값이고, 각 상수의 한글 이름을 나타낸다.
         'this.koreanName = koreanName;' -> 생성자의 매개변수인 'koreanName'의 값을
-        해당 함수의 'koreanName' 멤버 변수에 할당하느 역할을 한다.
+        해당 함수의 'koreanName' 멤버 변수에 할당하는 역할을 한다.
        즉, 이 코드는 각각의 묵, 찌, 빠 상수를 생성할 때 해당 상수의 한글 이름을 지정하고, 그 값을
        상수에 할당하는 역할을 한다. 이렇게 함으로써 각 상수는 생성될 때 한글 이름을 가지게 되며,
        이를 통해 한글 이름을 참조할 수 있다.
@@ -40,7 +40,7 @@ public class MukJjiBbaGame {
         오버라이드가 제대로 이루어졌는지 검사한다.
 
         'public Static toString() { return koreanName; }' 코드는 'toString' 메서드를 오버라이드하여
-        해당 열거 상수를 문자열로 표현할 대 반환하는 값을 재정의하는 것이다.
+        해당 열거 상수를 문자열로 표현할 때 반환하는 값을 재정의하는 것이다.
         기본적으로 Java의 'Enum'클래스는 'toString' 메서드를 사용하여 해당 열거 상수의 이름을 문자열로 반환
  */
 
