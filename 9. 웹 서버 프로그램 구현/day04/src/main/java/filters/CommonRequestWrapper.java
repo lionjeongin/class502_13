@@ -15,11 +15,10 @@ public class CommonRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public String getParameter(String name) {
-        String value = super.getParameter(name);
+        String value =  super.getParameter(name);
 
         value = value == null ? value : "★" + value + "♥";
 
         return value;
     }
-
 }

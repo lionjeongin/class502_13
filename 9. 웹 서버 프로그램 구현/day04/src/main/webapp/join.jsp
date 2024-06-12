@@ -2,7 +2,7 @@
 <%
 System.out.println(request);
 %>
-
+System.out.println(request);
 <%!
 
 %>
