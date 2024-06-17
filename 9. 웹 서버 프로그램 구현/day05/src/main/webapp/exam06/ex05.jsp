@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:url var="loginUrl" value='/member/login' />
 
-<a href="{loginUrl}">로그인</a>
-<a href="<c:url value='/member/login' />">회원가입</a>
+<a href="${loginUrl}">로그인</a>
+<a href="<c:url value='/member/join' />">회원가입</a>
 
 <form method="POST" action="${loginUrl}">
     이메일 : <input type="text" name="email"><br>
