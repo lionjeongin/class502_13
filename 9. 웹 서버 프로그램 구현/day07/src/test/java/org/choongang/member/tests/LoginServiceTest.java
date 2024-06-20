@@ -2,6 +2,9 @@ package org.choongang.member.tests;
 
 import com.github.javafaker.Faker;
 import jakarta.servlet.http.HttpServletRequest;
+import org.choongang.global.exceptions.BadRequestException;
+import org.choongang.member.controllers.RequestJoin;
+import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.services.MemberServiceProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +25,7 @@ public class LoginServiceTest {
 
     private LoginService loginService;
     private Faker faker;
+    private RequestJoin form;
 
     @Mock
     private HttpServletRequest request;
@@ -29,9 +33,21 @@ public class LoginServiceTest {
     @BeforeEach
     void init() {
         loginService = MemberServiceProvider.getInstance().loginService();
-
+        JoinService joinService = MemberServiceProvider.getInstance().joinService();
         faker = new Faker(Locale.ENGLISH);
 
+        // 회원 가입 -> 가입한 회원 정보로 email, password 스텁 생성
+        form = RequestJoin.builder()
+                .email(System.currentTimeMillis() + faker.internet().emailAddress())
+                .password(faker.regexify("\\w{8,16}").toLowerCase())
+                .userName(faker.name().fullName())
+                .build();
+        joinService.process(form);
+
+        setData();
+    }
+
+    void setData() {
         setParam("email", faker.internet().emailAddress());
         setParam("password", faker.regexify("\\w{8}").toLowerCase());
     }
@@ -44,13 +60,40 @@ public class LoginServiceTest {
     @DisplayName("로그인 성공시 예외가 발생하지 않음")
     void successTest() {
         assertDoesNotThrow(() -> {
-            loginService.process();
+            loginService.process(request);
         });
     }
 
     @Test
     @DisplayName("필수 입력 항목(이메일, 비밀번호) 검증, 검증 실패시 BadRequestException 발생")
     void requiredFieldTest() {
+        assertAll(
+                () -> requiredEachFieldTest("email", false, "이메일"),
+                () -> requiredEachFieldTest("email", true, "이메일"),
+                () -> requiredEachFieldTest("password", false, "비밀번호"),
+                () -> requiredEachFieldTest("password", true, "비밀번호")
+        );
+    }
+
+    void requiredEachFieldTest(String name, boolean isNull, String message) {
+        setData();
+        BadRequestException thrown = assertThrows(BadRequestException.class, () -> {
+            if (name.equals("password")) {
+                setParam("password", isNull?null:"   ");
+            } else { // 이메일
+                setParam("email", isNull?null:"   ");
+            }
+
+            loginService.process(request);
+        }, name + " 테스트");
+
+        String msg = thrown.getMessage();
+        assertTrue(msg.contains(message), name + ", 키워드:" + message + "테스트");
+    }
+
+    @Test
+    @DisplayName("이메일로 회원이 조회 되는지 검증, 검증 실패시 BadRequestException 발생")
+    void memberExistTest() {
 
     }
 }
