@@ -23,9 +23,9 @@ public class MessageUtil {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
         /**
-         * location.href : 주소 이동시 이동 기록이 남는다, 뒤로가기 버튼을 누른 경우
-         * POST 처리시 중복 된다.
-         * POST 처리시 이동할 때는 기록을 남기지 않는 이동 방식 location.replace(..)
+         * location.href : 주소 이동시 이동 기록이 남는다, 뒤로가 버튼을 누른 경우
+         * POST 처리가 중복 된다.
+         * POST 처리시 이동할때는 기록을 남기지 않는 이동 방식 location.replace(..)
          */
         //out.printf("<script>%s.location.href='%s';</script>", target, url);
         out.printf("<script>%s.location.replace('%s');</script>", target, url);
