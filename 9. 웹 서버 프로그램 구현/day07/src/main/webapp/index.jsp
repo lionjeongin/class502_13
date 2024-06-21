@@ -8,7 +8,7 @@
 로그인 상태 : ${isLogin} <br>
 
 <%-- 미로그인 상태 --%>
-<util:GuestOnly
+<util:GuestOnly>
     <a href="${loginUrl}">로그인</a>
     <a href="${joinUrl}">회원가입</a>
 </util:GuestOnly>
