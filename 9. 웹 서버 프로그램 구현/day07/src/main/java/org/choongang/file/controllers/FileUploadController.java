@@ -44,7 +44,8 @@ public class FileUploadController extends HttpServlet {
                 System.out.printf("파일이름: %s, 파일형식: %s, 파일용량: %d%n", fileName, contentType, size);
 
                 File file = new File("D:/uploads/" + fileName);
-                item.write(file.toPath()); // 메모리에 있는 파일 데이터가 file 쪽으로 이동
+                item.write(file.toPath()); // 메모리에 있느 파일 데이터가 file 쪽 경로로 이동
+
             }
         }
     }
