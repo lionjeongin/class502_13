@@ -33,8 +33,8 @@ public class AppCtx2 {
 
     @Bean
     public JoinService joinService() {
-        //return new JoinService(joinValidator(), memberDao());
-        return new JoinService();
+        return new JoinService(joinValidator(), memberDao());
+        //return new JoinService();
     }
 
     @Bean
@@ -44,7 +44,7 @@ public class AppCtx2 {
         return infoService;
     }
 
-    @Bean // 자바 JDK, 외부 라이브러리는 수동 등록이 필수
+    @Bean //  자바 JDK, 외부 라이브러리는 수동 등록이 필수
     public DateTimeFormatter dateTimeFormatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
