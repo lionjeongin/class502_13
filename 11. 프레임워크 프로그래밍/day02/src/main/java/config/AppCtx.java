@@ -1,12 +1,16 @@
 package config;
 
+import board.services.BoardService2;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
-@ComponentScan(basePackages = "member",
-    excludeFilters = @ComponentScan.Filter(type= FilterType.ASPECTJ, pattern = "member..*Dao")
-)
+@ComponentScan({"member", "board"})
 public class AppCtx {
+
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    public BoardService2 boardService2() {
+        return new BoardService2();
+    }
 
 
 }
