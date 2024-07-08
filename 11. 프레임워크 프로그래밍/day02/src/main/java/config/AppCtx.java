@@ -1,10 +1,12 @@
 package config;
 
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 
-@Configuration
-@ComponentScan("member")
+@ComponentScan(basePackages = "member",
+    excludeFilters = @ComponentScan.Filter(type= FilterType.ASPECTJ, pattern = "member..*Dao")
+)
 public class AppCtx {
+
 
 }
