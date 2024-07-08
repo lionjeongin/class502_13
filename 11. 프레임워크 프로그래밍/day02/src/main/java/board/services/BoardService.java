@@ -15,4 +15,9 @@ public class BoardService implements InitializingBean, DisposableBean {
     public void afterPropertiesSet() throws Exception {
         System.out.println("afterPropertiesSet()!");
     }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("destroy()!");
+    }
 }
