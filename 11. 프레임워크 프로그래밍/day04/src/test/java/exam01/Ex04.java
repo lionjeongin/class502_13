@@ -21,7 +21,7 @@ public class Ex04 {
     @Test
     void test1() {
         RequestJoin form = new RequestJoin();
-        form.setEmail("user99@test.org");
+        form.setEmail("user100@test.org");
         form.setPassword("12345678");
         form.setConfirmPassword(form.getPassword());
         form.setUserName("사용자100");

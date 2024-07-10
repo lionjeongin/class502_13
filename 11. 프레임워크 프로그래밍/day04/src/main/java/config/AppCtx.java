@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @MapperScan("mappers")
-//@ComponentScan("member")
-//@EnableJdbcRepositories("member.repositories")
+@ComponentScan("member")
+//@EnableJdbcRepositories("member")
 public class AppCtx {
 
     @Bean(destroyMethod = "close")
