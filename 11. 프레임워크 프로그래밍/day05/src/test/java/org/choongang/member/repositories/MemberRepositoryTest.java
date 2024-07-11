@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
 import java.util.List;
 
+import static org.springframework.data.domain.Sort.Order.asc;
 import static org.springframework.data.domain.Sort.Order.desc;
 
 @SpringJUnitWebConfig
@@ -75,19 +76,20 @@ public class MemberRepositoryTest {
     }
 
     @Test
-    void
-    test8() {
-        //Pageable pageable = PageRequest.of(0,3);
-        Pageable pageable = PageRequest.of(0, 3, Sort.by(desc("regDt")));
+    void test8() {
+
+        //Pageable pageable = PageRequest.of(0, 3);
+        Pageable pageable = PageRequest.of(0, 3, Sort.by(desc("regDt"), asc("email")));
         Page<Member> data = repository.findByUserNameContaining("용자", pageable);
 
         List<Member> members = data.getContent();
 
-        long total= data.getTotalElements(); // 조회된 전체 레코드 갯수
+        long total = data.getTotalElements(); // 조회된 전체 레코드 갯수
         int pages = data.getTotalPages();
 
         members.forEach(System.out::println);
 
         System.out.printf("총 갯수 : %d, 총 페이지 수 : %d%n", total, pages);
+
     }
 }
