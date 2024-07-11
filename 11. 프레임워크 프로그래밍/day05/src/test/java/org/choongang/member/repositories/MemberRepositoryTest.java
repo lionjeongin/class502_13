@@ -4,6 +4,9 @@ import org.choongang.config.MvcConfig;
 import org.choongang.member.entities.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
@@ -32,6 +35,7 @@ public class MemberRepositoryTest {
                 .build();
 
         repository.save(member);
+
     }
 
     @Test
@@ -46,5 +50,24 @@ public class MemberRepositoryTest {
     void test4() {
         Member member = repository.findByEmail("user02@test.org");
         System.out.println(member);
+    }
+
+    @Test
+    void test5() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Member> members = repository.findByUserNameContaining("용자", pageable);
+        //members.forEach(System.out::println);
+    }
+
+    @Test
+    void test6() {
+        List<Member> members = repository.findByUserNameContainingAndEmailContainingOrderByRegDtDesc("용자", "user");
+        members.forEach(System.out::println);
+    }
+
+    @Test
+    void test7() {
+        List<Member> members = repository.getMembers("%용자%", "%user%");
+        members.forEach(System.out::println);
     }
 }
