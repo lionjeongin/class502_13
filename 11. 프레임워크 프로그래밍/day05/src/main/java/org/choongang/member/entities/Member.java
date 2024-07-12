@@ -1,3 +1,4 @@
+
 package org.choongang.member.entities;
 
 import lombok.AllArgsConstructor;

@@ -1,3 +1,4 @@
+
 package org.choongang.member.repositories;
 
 import org.choongang.member.entities.Member;
