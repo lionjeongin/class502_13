@@ -3,16 +3,30 @@ package org.choongang.member.controllers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Slf4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
+    @ModelAttribute("commonValue")
+    public String commonValue() {
+        return "공통 속성값...";
+    }
+
+    @ModelAttribute("hobbies")
+    public List<String> hobbies() {
+        return List.of("취미1", "취미2", "취미3", "취미4");
+    }
+
     @GetMapping("/join")
-    public String join() {
+    public String join(@ModelAttribute RequestJoin form) {
+
 
         return "member/join";
     }
@@ -26,7 +40,13 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(RequestLogin2 form) {
+
+        if (form != null) {
+            log.info("이메일:{}, 비밀번호: {}", form.email(), form.password());
+        }
+
+        log.info(form.toString());
 
         return "member/login";
     }
@@ -34,7 +54,14 @@ public class MemberController {
     //private final Logger log = LoggerFactory.getLogger(MemberController.class);
     /*
 
+    @GetMapping("/join")
+    public String join(Model model) {
 
+        RequestJoin form = new RequestJoin();
+        model.addAttribute("requestJoin", form);
+
+        return "member/join";
+    }
     @PostMapping("/join")
     public String joinPs(RequestJoin form) {
 
