@@ -6,7 +6,6 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
@@ -18,10 +17,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
-@Configuration
-public class DBConfig2 {
+//@Configuration
+public class DBConfig2 {/*
     @Profile("!prod") // prod 프로파일이 아닌 경우
-    @Configuration
+    //@Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")
@@ -33,6 +32,7 @@ public class DBConfig2 {
             DataSource ds = new DataSource();
 
             /* 연결 설정 S */
+    /*
             ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
             ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
             ds.setUsername("SPRING");
@@ -40,13 +40,14 @@ public class DBConfig2 {
             /* 연결 설정 E */
 
             /* 커넥션 풀 설정 S */
+    /*
             ds.setInitialSize(2);
             ds.setMaxActive(10);
             ds.setTestWhileIdle(true);
             ds.setMinEvictableIdleTimeMillis(1000 * 60);
             ds.setTimeBetweenEvictionRunsMillis(1000 * 5);
             /* 커넥션 풀 설정 E */
-
+/*
             return ds;
         }
 
@@ -75,7 +76,7 @@ public class DBConfig2 {
     }
 
     @Profile("prod")
-    @Configuration
+    //@Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")
@@ -87,20 +88,20 @@ public class DBConfig2 {
 
             DataSource ds = new DataSource();
 
-            /* 연결 설정 S */
+            /* 연결 설정 S
             ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
             ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
             ds.setUsername("SPRING");
             ds.setPassword("oracle");
-            /* 연결 설정 E */
+            /* 연결 설정 E
 
-            /* 커넥션 풀 설정 S */
+            /* 커넥션 풀 설정 S
             ds.setInitialSize(2);
             ds.setMaxActive(10);
             ds.setTestWhileIdle(true);
             ds.setMinEvictableIdleTimeMillis(1000 * 60);
             ds.setTimeBetweenEvictionRunsMillis(1000 * 5);
-            /* 커넥션 풀 설정 E */
+            /* 커넥션 풀 설정 E
 
             return ds;
         }
@@ -128,4 +129,5 @@ public class DBConfig2 {
             return new NamedParameterJdbcTemplate(dataSource);
         }
     }
+    */
 }
