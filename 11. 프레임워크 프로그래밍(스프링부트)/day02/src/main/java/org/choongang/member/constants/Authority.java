@@ -1,6 +1,6 @@
 package org.choongang.member.constants;
 
-public class Authority {
-    ADMIN,
-    USER
+public enum Authority {
+    USER,
+    ADMIN
 }
