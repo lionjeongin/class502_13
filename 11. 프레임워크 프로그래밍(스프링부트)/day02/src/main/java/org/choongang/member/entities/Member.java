@@ -2,8 +2,11 @@ package org.choongang.member.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.choongang.board.entities.BoardData;
 import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
+
+import java.util.List;
 
 @Builder
 @Data
@@ -19,19 +22,28 @@ public class Member extends BaseEntity {
     @Id /* @GeneratedValue(strategy = GenerationType.AUTO) */ @GeneratedValue
     private Long seq;
 
-    @Column(length = 60, nullable = false, unique = true)
+    @Column(length=60, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 65, nullable = false)
+    @Column(length=65, nullable = false)
     private String password;
-    @Column(length = 40, nullable = false, name = "name")
+
+    @Column(length=40, nullable = false, name="name")
     private String userName;
 
     // @Lob
     @Transient
     private String introduction;
 
-    @Column(length = 10)
+    @Column(length=10)
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="profileSeq")
+    private MemberProfile profile;
+
+    @ToString.Exclude // ToString 추가 배제
+    @OneToMany(mappedBy = "member")
+    private List<BoardData> items;
 }
