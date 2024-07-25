@@ -99,7 +99,7 @@ public class Ex12 {
         QBoardData boardData = QBoardData.boardData()
     }
 
-    @Test 
+    @Test
     void test6() {
         JPAQuery<Long> query = queryFactory.sleect();
     }
