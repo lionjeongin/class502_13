@@ -1,5 +1,10 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -28,10 +33,10 @@ public class Ex12 {
     private MemberRepository memberRepository;
 
     @Autowired
-    private JPAQueryFactory queryFactory;
+    private BoardDataRepository boardDataRepository;
 
     @Autowired
-    private BoardDataRepository boardDataRepository;
+    private JPAQueryFactory queryFactory;
 
     @PersistenceContext
     private EntityManager em;
@@ -85,22 +90,74 @@ public class Ex12 {
     void test4() {
         QBoardData boardData = QBoardData.boardData;
 
-        JPAQueryFactory factory = new JPAQueryFactory(em);
-        JPAQuery<BoardData> query = factory
+        //JPAQueryFactory factory = new JPAQueryFactory(em);
+        JPAQuery<BoardData> query = queryFactory
                 .selectFrom(boardData)
                 .leftJoin(boardData.member)
                 .fetchJoin();
+
         List<BoardData> items = query.fetch();
         //items.forEach(System.out::println);
     }
 
     @Test
     void test5() {
-        QBoardData boardData = QBoardData.boardData()
+        QBoardData boardData = QBoardData.boardData;
+        JPAQuery<Tuple> query = queryFactory.select(boardData.subject, boardData.content)
+                .from(boardData);
+        List<Tuple> items = query.fetch();
+        for (Tuple item : items) {
+            String subject = item.get(boardData.subject);
+            String content = item.get(boardData.content);
+            System.out.printf("subject=%s, content=%s%n", subject, content);
+        }
     }
 
     @Test
     void test6() {
-        JPAQuery<Long> query = queryFactory.sleect();
+        QBoardData boardData = QBoardData.boardData;
+        JPAQuery<Long> query = queryFactory.select(boardData.seq.sum())
+                .from(boardData);
+        long sum = query.fetchOne();
+        System.out.println(sum);
+
+    }
+
+    @Test
+    void test7() {
+        QBoardData boardData = QBoardData.boardData;
+
+        BooleanBuilder andBuilder = new BooleanBuilder();
+        andBuilder.and(boardData.subject.contains("제목"))
+                .and(boardData.member.email.eq("user01@test.org"));
+        /*
+        BooleanBuilder orBuilder = new BooleanBuilder();
+        orBuilder.or(boardData.seq.eq(2L))
+                .or(boardData.seq.eq(3L))
+                .or(boardData.seq.eq(4L));
+
+        andBuilder.and(orBuilder);
+        */
+
+        PathBuilder<BoardData> pathBuilder = new PathBuilder<>(BoardData.class, "boardData");
+
+
+        JPAQuery<BoardData> query = queryFactory.selectFrom(boardData)
+                .leftJoin(boardData.member)
+                .fetchJoin()
+                .where(andBuilder)
+                .offset(3) // 조회 시작 레코드 위치 3번 행부터 조회 시작
+                .limit(3) // 3개 레코드로 한정 - 갯수 제한
+                .orderBy(
+                        new OrderSpecifier(Order.DESC, pathBuilder.get("createdAt")),
+                        new OrderSpecifier(Order.ASC, pathBuilder.get("subject"))
+                );
+        //.where(boardData.seq.in(2L, 3L, 4L)); // BooleanExpression - Predicate
+
+        List<BoardData> items = query.fetch();
+        items.forEach(System.out::println);
+
+
+
     }
 }
