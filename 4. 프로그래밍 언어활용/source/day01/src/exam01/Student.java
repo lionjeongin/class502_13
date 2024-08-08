@@ -8,4 +8,4 @@ public class Student {
     void study() {
         System.out.println(name +'가' + subject + "를 공부한다.");
     }
-}
+} 
